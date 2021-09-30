@@ -6,8 +6,8 @@
  import { Items } from "./items.interface";
 
  /**
- * In-Memory Store
- */
+  * In-Memory Store
+  */
 
 let items: Items = {
     1: {
@@ -33,7 +33,7 @@ let items: Items = {
     }
   };
 
-  /**
+/**
  * Service Methods
  */
 
