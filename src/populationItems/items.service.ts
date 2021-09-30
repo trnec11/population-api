@@ -2,41 +2,16 @@
  * Data Model Interfaces
  */
 
- import { BaseItem, Item } from "./item.interface";
- import { Items } from "./items.interface";
+import { Item } from "./item.interface";
+import * as ParserService from "../data/parser.service"
+import path from "path";
 
- /**
-  * In-Memory Store
-  */
-
-let items: Items = {
-    1: {
-      id: 1,
-      name: "Burger",
-      price: 599,
-      description: "Tasty",
-      image: "https://cdn.auth0.com/blog/whatabyte/burger-sm.png"
-    },
-    2: {
-      id: 2,
-      name: "Pizza",
-      price: 299,
-      description: "Cheesy",
-      image: "https://cdn.auth0.com/blog/whatabyte/pizza-sm.png"
-    },
-    3: {
-      id: 3,
-      name: "Tea",
-      price: 199,
-      description: "Informative",
-      image: "https://cdn.auth0.com/blog/whatabyte/tea-sm.png"
-    }
-  };
+const csvFilePath = path.join(__dirname, '..', 'data', 'population.csv');
 
 /**
  * Service Methods
  */
 
-export const findAll = async (): Promise<Item[]> => Object.values(items);
+export const findAll = async (): Promise<Item[]> => Object.values(await ParserService.parseCsv(csvFilePath));
 
-export const find = async (id: number): Promise<Item> => items[id];
+// export const find = async (id: number): Promise<Item> => items[id];
